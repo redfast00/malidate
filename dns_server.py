@@ -11,10 +11,10 @@ class DynamicResolver(object):
     def _do_NS_response(self, name=None):
         answer = dns.RRHeader(
             name=name,
-            payload=dns.Record_NS(ttl=10, name='ns1.'+name),
+            payload=dns.Record_NS(ttl=10, name=b'ns1.'+name),
             type=dns.NS)
         additional = dns.RRHeader(
-            name='ns1.'+name,
+            name=b'ns1.'+name,
             payload=dns.Record_A(ttl=10, address=config.PUBLIC_IP),
             type=dns.A)
         answers = [answer]
